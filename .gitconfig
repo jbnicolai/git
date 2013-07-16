@@ -132,3 +132,6 @@
 
 [github]
 	user = jbnicolai
+
+[apply]
+    whitespace = fix
