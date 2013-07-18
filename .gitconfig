@@ -6,7 +6,7 @@
 	email = joshua@jbna.nl
 
 [credential]
-	helper = store
+	helper = osxkeychain
 
 [core]
 	editor = vim
