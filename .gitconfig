@@ -41,6 +41,9 @@
     # update current branch
     update = !sh -c 'git fetch origin && git rebase -p origin/${1-master}' -
 
+    # list authors on project
+    authors = !sh -c 'git log --format='%aN' | sort -u' -
+
     # creates a diff of current branch against supplied branch, usage: git export-branch [refbranch]
     branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
     export-branch = !git format-patch --stdout $1 > ~/branches/`git branch-name`.diff
