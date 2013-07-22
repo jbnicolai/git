@@ -141,3 +141,6 @@
 
 [push]
 	default = tracking
+
+[advice]
+	statusHints = false
