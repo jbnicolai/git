@@ -131,7 +131,8 @@
 	trustExitCode = true
 
 [http]
-    sslVerify = false
+	sslVerify = false
+	postBuffer = 209715200
 
 [github]
 	user = jbnicolai
