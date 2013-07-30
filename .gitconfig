@@ -1,4 +1,5 @@
 [hub]
+    # prefer github over https.
     protocol = https
 
 [user]
@@ -6,11 +7,17 @@
 	email = joshua@jbna.nl
 
 [credential]
+    # try to store credentials in the OS X keychain.
 	helper = osxkeychain
 
 [core]
+    # vim as default editor.
 	editor = vim
+
+    # global excludesfile.
 	excludesfile = ~/.gitignore
+
+    # no output conversion, but fix line endings on input.
 	autocrlf = input
 
 [alias]
@@ -27,26 +34,17 @@
     up = !git update
     smash = !git ir
 
-    unstage = reset HEAD
-    undo-commit = reset --soft HEAD^
-
     # interactive rebase
     ir = !sh -c 'git rebase -i origin/${1-master}' -
+
+    # undo
+    unstage = reset HEAD
+    undo-commit = reset --soft HEAD^
 
     # log aliases
     log-branch = log origin/master..
     blog = !git log-branch
     mlog = !git log --committer=\"`git me`\"
-
-    # update current branch
-    update = !sh -c 'git fetch origin && git rebase -p origin/${1-master}' -
-
-    # list authors on project
-    authors = !sh -c 'git log --format='%aN' | sort -u' -
-
-    # creates a diff of current branch against supplied branch, usage: git export-branch [refbranch]
-    branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
-    export-branch = !git format-patch --stdout $1 > ~/branches/`git branch-name`.diff
 
     # all commits that aren't merges on all branches
     all = !git log --pretty=oneline --abbrev-commit --all --no-merges
@@ -56,6 +54,16 @@
 
     # today's commits without formatting or paging
     today-text = !git --no-pager today --no-color
+
+    # update current branch, rebase all locally diverging commits on top.
+    update = !sh -c 'git fetch origin && git rebase -p origin/${1-master}' -
+
+    # list authors on project
+    authors = !sh -c 'git log --format='%aN' | sort -u' -
+
+    # creates a diff of current branch against supplied branch, usage: git export-branch [refbranch]
+    branch-name = !git for-each-ref --format='%(refname:short)' `git symbolic-ref HEAD`
+    export-branch = !git format-patch --stdout $1 > ~/branches/`git branch-name`.diff
 
     # files different from master on current branch
     fdm = !git diff origin/master... --name-status
@@ -101,6 +109,7 @@
     mergers = !git log --pretty=format:"%Cred%aN%Creset" --merges | sort | uniq -c | sort -rn
 
 [color]
+    # enable colours. terminal needs to support them, of course.
 	ui = true
     diff = auto
     status = auto
@@ -108,24 +117,28 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path =
 
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 
 [http]
+    # don't verify ssl certificates - companies too often serve their intranet repos over unsigned https.
 	sslVerify = false
+    # default is 1MiB, sufficient for normal source requests but can fail when pushing blobs.
 	postBuffer = 209715200
 
 [github]
 	user = jbnicolai
 
 [apply]
+    # trailing whitespace.
     whitespace = fix
 
 [push]
-	default = tracking
+    # action for git push when no refspec is given. default in pre-git2.0 is matching, which can be a pain when you, for instance, track an upstream life server as well as the dev server.
+	default = upstream
 
 [advice]
+    # disables the introductionary explanations and hints
 	statusHints = false
