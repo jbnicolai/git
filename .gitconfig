@@ -8,7 +8,7 @@
 
 [credential]
     # try to store credentials in the OS X keychain.
-	helper = osxkeychain
+	helper = cache
 
 [core]
     # vim as default editor.
