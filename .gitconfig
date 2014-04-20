@@ -109,6 +109,10 @@
   peeps = !git log --pretty=format:"%Cblue%aN%Creset" --no-merges | sort | uniq -c | sort -rn
   mergers = !git log --pretty=format:"%Cred%aN%Creset" --merges | sort | uniq -c | sort -rn
 
+  # local scripts
+  delete-old-branches = !sh git-delete-old-branches
+  push-origin = !sh git-push-origin
+
 [color]
   # enable colours. terminal needs to support them, of course.
   ui = true
