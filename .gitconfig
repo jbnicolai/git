@@ -4,7 +4,7 @@
 
 [user]
   name = Joshua Appelman
-  email = joshua@jbna.nl
+  email = jappelman@xebia.com
 
 [credential]
   # try to store credentials in the OS X keychain.
