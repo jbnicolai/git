@@ -151,3 +151,7 @@
 [advice]
   # disables the introductionary explanations and hints
   statusHints = false
+[diff]
+  tool=vimdiff
+[merge]
+  tool=vimdiff
