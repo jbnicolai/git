@@ -19,6 +19,7 @@
 
   # no output conversion, but fix line endings on input.
   autocrlf = input
+  pager = less -S
 
 [alias]
   # short aliases
