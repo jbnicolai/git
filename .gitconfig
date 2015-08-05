@@ -90,9 +90,9 @@
   # `git sync`
   # update current branch and master
   sync = !git update && \
-  git co master && \
-  git pull && \
-  git co @{-1}
+    git co master && \
+    git pull && \
+    git co @{-1}
 
   # attempt to cleanup some common problems
   unfuck = !git fsck && git remote prune origin && git gc
