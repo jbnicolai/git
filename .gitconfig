@@ -53,6 +53,9 @@
   # all commits today for only me
   today = !git all --since='12am' --committer=\"`git me`\"
 
+  # all commits this week for only me
+  week = !git all --since='one week ago' --committer=\"`git me`\"
+
   # today's commits without formatting or paging
   today-text = !git --no-pager today --no-color
 
